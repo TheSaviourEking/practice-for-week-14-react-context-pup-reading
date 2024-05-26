@@ -1,15 +1,20 @@
 import { useState } from 'react';
+import { usePuppyType } from '../../context/PupContext';
+
 import banana from '../../pups/banana-pup.jpg';
 import sleepy from '../../pups/sleepy-pup.jpg';
 import speedy from '../../pups/speedy-pup.jpg';
 
 function PupForm() {
+  const { setPuppyType } = usePuppyType();
   const [selectedPup, setSelectedPup] = useState('select');
 
   const onSubmit = (e) => {
     e.preventDefault();
-  }
 
+    setPuppyType(() => selectedPup);
+  }
+  // alert(selectedPup)
   return (
     <form onSubmit={onSubmit}>
       <select
